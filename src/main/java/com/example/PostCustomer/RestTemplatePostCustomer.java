@@ -1,4 +1,4 @@
-package com.example.proxy;
+package com.example.PostCustomer;
 
 import com.example.DTO.Customer;
 import org.springframework.beans.factory.annotation.Value;
@@ -9,27 +9,32 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
 @Component
-public class PaymentProxyRestTemplateCustomer {
+public class RestTemplatePostCustomer {
 
     //@Autowired //daca nu faci DI in constructor
     private  RestTemplate rest;
     @Value("https://api.predic8.de:443/shop")
     private String paymentsServiceUrl;
 
-    public PaymentProxyRestTemplateCustomer(RestTemplate rest) {
+    public RestTemplatePostCustomer(RestTemplate rest) {
         this.rest = rest;
     }
 
 
-    public Customer getCustomer(String number) { //  V2 public ResponseEntity<Payment> createPayment(Payment payment)
-        String uri = paymentsServiceUrl + "/customers/" + number;
+    public Customer postCustomer(Customer customer) { //  V2 public ResponseEntity<Payment> createPayment(Payment payment)
+        String uri = paymentsServiceUrl + "/customers/";
+
+        HttpEntity<Customer> httpEntity =
+                new HttpEntity<>(customer);
 
         ResponseEntity<Customer> response =
                 rest.exchange(uri,
-                        HttpMethod.GET,
-                        new HttpEntity<>(Customer.class),
+                        HttpMethod.POST,
+                        httpEntity,
                         Customer.class);
         return response.getBody();      // V2 return response;
+
+
     }
 
 }

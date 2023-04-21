@@ -1,7 +1,6 @@
-package com.example.GetCustomers;
+package com.example.getCustomer;
 
 import com.example.DTO.Customer;
-import com.example.DTO.Foo;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
@@ -10,26 +9,26 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
 @Component
-public class RestTemplateCustomers {
+public class RestTemplateCustomer {
 
     //@Autowired //daca nu faci DI in constructor
     private  RestTemplate rest;
     @Value("https://api.predic8.de:443/shop")
     private String paymentsServiceUrl;
 
-    public RestTemplateCustomers(RestTemplate rest) {
+    public RestTemplateCustomer(RestTemplate rest) {
         this.rest = rest;
     }
 
 
-    public Foo getCustomers() { //  V2 public ResponseEntity<Payment> createPayment(Payment payment)
-        String uri = paymentsServiceUrl + "/customers/";
+    public Customer getCustomer(int id) { //  V2 public ResponseEntity<Payment> createPayment(Payment payment)
+        String uri = paymentsServiceUrl + "/customers/" + id;
 
-        ResponseEntity<Foo> response =
+        ResponseEntity<Customer> response =
                 rest.exchange(uri,
                         HttpMethod.GET,
-                        new HttpEntity<>(Foo.class),
-                        Foo.class);
+                        new HttpEntity<>(Customer.class),
+                        Customer.class);
         return response.getBody();      // V2 return response;
     }
 

@@ -1,31 +1,52 @@
 package com.example.DTO;
 
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class Meta{
-    public int count;
-    public int limit;
-    public int page;
+import java.util.LinkedHashMap;
+import java.util.Map;
+
+public class Meta {
+
+    private Integer count;
+    private Integer limit;
+    private Integer page;
+
     @JsonProperty("next_url")
-    public String nextUrl;
+    private String next_url;
 
-
-
-    public int getCount() {
+    public Integer getCount() {
         return count;
     }
 
-    public void setCount(int count) {
+    public void setCount(Integer count) {
         this.count = count;
     }
 
-    @Override
-    public String toString() {
-        return "Meta{" +
-                "count=" + count +
-                ", limit=" + limit +
-                ", page=" + page +
-                ", nextUrl='" + nextUrl + '\'' +
-                '}';
+    public Integer getLimit() {
+        return limit;
     }
+
+    public void setLimit(Integer limit) {
+        this.limit = limit;
+    }
+
+    public Integer getPage() {
+        return page;
+    }
+
+    public void setPage(Integer page) {
+        this.page = page;
+    }
+
+    public String getNext_url() {
+        return next_url;
+    }
+
+    public void setNext_url(String next_url) {
+        this.next_url = next_url;
+    }
+
+
+
 }

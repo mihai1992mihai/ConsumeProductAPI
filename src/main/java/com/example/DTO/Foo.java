@@ -1,13 +1,14 @@
 package com.example.DTO;
-
-import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
+
 
 public class Foo {
 
-    private ArrayList<Customer> customers;
     private Meta meta;
+    private List<Customer> customers;
+
 
     public Meta getMeta() {
         return meta;
@@ -17,22 +18,14 @@ public class Foo {
         this.meta = meta;
     }
 
-
-
-    public List<Customer> getConsumers() {
+    public List<Customer> getCustomers() {
         return customers;
     }
 
-    public void setConsumers(ArrayList<Customer> customers) {
+    public void setCustomers(List<Customer> customers) {
         this.customers = customers;
     }
 
 
-    @Override
-    public String toString() {
-        return "Foo{" +
-                "customers=" + customers +
-                ", meta=" + meta +
-                '}';
-    }
+
 }

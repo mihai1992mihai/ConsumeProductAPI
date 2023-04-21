@@ -1,16 +1,16 @@
-package com.example.proxy;
+package com.example.GetCustomers;
 
 import com.example.DTO.Foo;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.client.WebClient;
 
 @Component
-public class PaymentProxyWebClient {
+public class WebClientCustomers {
 
-    public Foo consumeAPI() {
+    public Foo getCustomers() {
         return WebClient.create("https://api.predic8.de:443/shop")
                 .get()
-                .uri("/categories")
+                .uri("/customers/")
                 .retrieve()
                 .bodyToMono(Foo.class)
 
