@@ -1,0 +1,14 @@
+### Get all customers
+GET localhost:8082/customers/
+
+### Customer with number
+GET localhost:8082/customers/1
+
+### Post a customer
+POST localhost:8082/customers/
+Content-Type: application/json
+
+{
+  "firstname": "asfsd",
+  "lastname": "content"
+}

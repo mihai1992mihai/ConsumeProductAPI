@@ -14,7 +14,6 @@ public class WebClientPostCustomer {
                 .bodyValue(customer)
                 .retrieve()
                 .bodyToMono(Customer.class)
-
                 .block();
 
 

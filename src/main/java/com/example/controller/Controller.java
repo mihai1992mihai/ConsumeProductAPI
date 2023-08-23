@@ -25,19 +25,13 @@ public class Controller {
     private final RestTemplatePostCustomer restTemplatePostCustomer;
     private final OpenFeignPostCustomer openFeignPostCustomer;
     private final OpenFeignCustomers openFeignCustomers;
-
     private final RestTemplateCustomers restTemplateCustomers;
-
     private final WebClientCustomers webClientCustomers;
     RestTemplate rest;
     private final WebClientConsumer webClientConsumer;
-
     private final PaymentProxyRestTemplate paymentProxyRestTemplate;
-
     private final RestTemplateCustomer restTemplateCustomer;
     private final OpenFeignCustomer openFeignCustomer;
-
-
 
     private static Logger logger =
             Logger.getLogger(Controller.class.getName());
