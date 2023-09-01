@@ -1,18 +1,18 @@
-package com.example.GetCustomers;
+package com.example.getProduct;
 
-import com.example.DTO.Foo;
+import com.example.dto.ProductDTO;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.client.WebClient;
 
 @Component
-public class WebClientCustomers {
+public class WebClientConsumer {
 
-    public Foo getCustomers() {
-        return WebClient.create("https://api.predic8.de:443/shop")
+    public ProductDTO consumeAPI(int id) {
+        return WebClient.create("https://api.predic8.de:443/shop/customers")
                 .get()
-                .uri("/customers/")
+                .uri("/" + id)
                 .retrieve()
-                .bodyToMono(Foo.class)
+                .bodyToMono(ProductDTO.class)
 
                 .block();
     }

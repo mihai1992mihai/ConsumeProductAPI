@@ -1,6 +1,6 @@
-package com.example.getCustomer;
+package com.example.getProduct;
 
-import com.example.DTO.Customer;
+import com.example.dto.ProductDTO;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
@@ -21,14 +21,14 @@ public class RestTemplateCustomer {
     }
 
 
-    public Customer getCustomer(int id) { //  V2 public ResponseEntity<Payment> createPayment(Payment payment)
+    public ProductDTO getCustomer(int id) { //  V2 public ResponseEntity<Payment> createPayment(Payment payment)
         String uri = paymentsServiceUrl + "/customers/" + id;
 
-        ResponseEntity<Customer> response =
+        ResponseEntity<ProductDTO> response =
                 rest.exchange(uri,
                         HttpMethod.GET,
-                        new HttpEntity<>(Customer.class),
-                        Customer.class);
+                        new HttpEntity<>(ProductDTO.class),
+                        ProductDTO.class);
         return response.getBody();      // V2 return response;
     }
 

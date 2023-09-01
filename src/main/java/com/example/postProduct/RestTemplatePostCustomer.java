@@ -1,6 +1,6 @@
-package com.example.PostCustomer;
+package com.example.postProduct;
 
-import com.example.DTO.Customer;
+import com.example.dto.ProductDTO;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
@@ -21,17 +21,17 @@ public class RestTemplatePostCustomer {
     }
 
 
-    public Customer postCustomer(Customer customer) { //  V2 public ResponseEntity<Payment> createPayment(Payment payment)
+    public ProductDTO postCustomer(ProductDTO productDTO) { //  V2 public ResponseEntity<Payment> createPayment(Payment payment)
         String uri = paymentsServiceUrl + "/customers/";
 
-        HttpEntity<Customer> httpEntity =
-                new HttpEntity<>(customer);
+        HttpEntity<ProductDTO> httpEntity =
+                new HttpEntity<>(productDTO);
 
-        ResponseEntity<Customer> response =
+        ResponseEntity<ProductDTO> response =
                 rest.exchange(uri,
                         HttpMethod.POST,
                         httpEntity,
-                        Customer.class);
+                        ProductDTO.class);
         return response.getBody();      // V2 return response;
 
 

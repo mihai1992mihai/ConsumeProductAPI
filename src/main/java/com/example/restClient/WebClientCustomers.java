@@ -1,22 +1,20 @@
-package com.example.PostCustomer;
+package com.example.restClient;
 
-import com.example.DTO.Customer;
+import com.example.dto.ProductsDTO;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.client.WebClient;
 
 @Component
-public class WebClientPostCustomer {
+public class WebClientCustomers {
 
-    public Customer getCustomers(Customer customer) {
+    public ProductsDTO getCustomers() {
         return WebClient.create("https://api.predic8.de:443/shop")
-                .post()
+                .get()
                 .uri("/customers/")
-                .bodyValue(customer)
                 .retrieve()
-                .bodyToMono(Customer.class)
+                .bodyToMono(ProductsDTO.class)
+
                 .block();
-
-
     }
 //    V2, ca sa lucreze trebuie activat Bean-ul WebClient din ProjectConfig
 //    private final WebClient webClient;

@@ -1,6 +1,6 @@
-package com.example.getCustomer;
+package com.example.getProduct;
 
-import com.example.DTO.Foo;
+import com.example.dto.ProductsDTO;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
@@ -21,14 +21,14 @@ public class PaymentProxyRestTemplate {
     }
 
 
-    public Foo getCustomers() { //  V2 public ResponseEntity<Payment> createPayment(Payment payment)
+    public ProductsDTO getCustomers() { //  V2 public ResponseEntity<Payment> createPayment(Payment payment)
         String uri = paymentsServiceUrl + "/customers/";
 
-        ResponseEntity<Foo> response =
+        ResponseEntity<ProductsDTO> response =
                 rest.exchange(uri,
                         HttpMethod.GET,
-                        new HttpEntity<>(Foo.class),
-                        Foo.class);
+                        new HttpEntity<>(ProductsDTO.class),
+                        ProductsDTO.class);
         return response.getBody();      // V2 return response;
     }
 

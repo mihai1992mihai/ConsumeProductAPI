@@ -7,7 +7,7 @@ import org.springframework.web.client.RestTemplate;
 import org.springframework.web.reactive.function.client.WebClient;
 
 @Configuration
-@EnableFeignClients(basePackages = {"com.example.getCustomer", "com.example.GetCustomers", "com.example.PostCustomer"})
+@EnableFeignClients(basePackages = {"com.example.getProduct", "com.example.restClient", "com.example.postProduct", "com.example.deleteProduct"})
 public class ProjectConfig {
 
     @Bean
