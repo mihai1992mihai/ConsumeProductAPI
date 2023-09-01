@@ -2,7 +2,7 @@
 GET localhost:8082/products
 
 ### Customer with number OpenFeign
-GET localhost:8082/products/10
+GET localhost:8082/products/55
 
 ### Post a product OpenFeign
 POST localhost:8082/products
@@ -14,7 +14,7 @@ Content-Type: application/json
 }
 
 ### Put a product OpenFeign
-PUT localhost:8082/products/37
+PUT localhost:8082/products/20
 Content-Type: application/json
 
 {
@@ -23,7 +23,7 @@ Content-Type: application/json
 }
 
 ### Delete a product OpenFeign
-DELETE localhost:8082/products/40
+DELETE localhost:8082/products/27
 
 --------------------
 
@@ -31,7 +31,7 @@ DELETE localhost:8082/products/40
 GET localhost:8082/restTemplate/products
 
 ### Customer with number Rest
-GET localhost:8082/restTemplate/products/19
+GET localhost:8082/restTemplate/products/55
 
 ### Post a product Rest
 POST localhost:8082/restTemplate/products
@@ -52,4 +52,4 @@ Content-Type: application/json
 }
 
 ### Delete a product Rest
-DELETE localhost:8082/restTemplate/products/41
+DELETE localhost:8082/restTemplate/products/21

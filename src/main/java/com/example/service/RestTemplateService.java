@@ -1,46 +1,42 @@
 package com.example.service;
 
-import com.example.dto.ApiResponse;
-import com.example.restClient.RestTemplateClient;
+import com.example.dto.ProductDTO;
+import com.example.dto.ProductsDTO;
+import com.fasterxml.jackson.databind.JsonNode;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.HttpClientErrorException;
 
 @Service
 @AllArgsConstructor
 public class RestTemplateService {
 
-    RestTemplateClient RestTemplateClient;
+    com.example.restClient.RestTemplateClient RestTemplateClient;
 
-    public ApiResponse deleteProduct(Long id) {
+    public ResponseEntity<ProductsDTO> getProducts() {
 
-        try {
-            RestTemplateClient.deleteProduct(id);
-        } catch (HttpClientErrorException ex) {
-            if(ex.getStatusCode() == HttpStatus.NOT_FOUND) {
-                return buildNotFoundResponse();
-            } else {
-                throw ex;
-            }
-        } catch (Exception ex) {
-            return buildErrorResponse(HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-
-        return buildSuccessResponse();
-
+        return RestTemplateClient.getProducts();
     }
 
-    private ApiResponse buildNotFoundResponse() {
-        return new ApiResponse( "Product not found", HttpStatus.NOT_FOUND.value());
+    public ResponseEntity<ProductDTO> getProduct(Long id) {
+
+        return RestTemplateClient.getProduct(id);
     }
 
-    private ApiResponse buildErrorResponse(HttpStatus status) {
-        return new ApiResponse( "Error occurred", status.value());
+    public ResponseEntity<ProductDTO> postProduct(ProductDTO productDTO) {
+
+        return RestTemplateClient.postProduct(productDTO);
     }
 
-    private ApiResponse buildSuccessResponse() {
-        return new ApiResponse( "Product deleted successfully", HttpStatus.OK.value());
+    public ResponseEntity<ProductDTO> putProduct(Long id, ProductDTO productDTO) {
+
+        return RestTemplateClient.putProduct(id, productDTO);
     }
+
+    public ResponseEntity<JsonNode> deleteProduct(Long id) {
+
+           return RestTemplateClient.deleteProduct(id);
+    }
+
+
 }

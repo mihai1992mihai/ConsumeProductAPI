@@ -10,12 +10,6 @@ import org.springframework.web.reactive.function.client.WebClient;
 @EnableFeignClients(basePackages = {"com.example.getProduct", "com.example.restClient", "com.example.postProduct", "com.example.deleteProduct"})
 public class ProjectConfig {
 
-    @Bean
-    public WebClient webClient() {
-        return WebClient
-                .builder()
-                .build();
-    }
 
     @Bean(name = "rest")
     public RestTemplate restTemplate() {

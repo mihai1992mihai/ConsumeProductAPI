@@ -1,9 +1,8 @@
 package com.example.restClient;
 
-import com.example.dto.ApiResponse;
 import com.example.dto.ProductDTO;
 import com.example.dto.ProductsDTO;
-import lombok.extern.slf4j.Slf4j;
+import com.fasterxml.jackson.databind.JsonNode;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -24,6 +23,6 @@ public interface OpenFeignClient {
     ResponseEntity<ProductDTO> putProduct(@PathVariable Long id, ProductDTO productDTO);
 
     @DeleteMapping(value = "/products/{id}", produces = { "application/json" })
-    ResponseEntity<Void> deleteProduct(@PathVariable Long id);
+    ResponseEntity<JsonNode> deleteProduct(@PathVariable Long id);
 }
 

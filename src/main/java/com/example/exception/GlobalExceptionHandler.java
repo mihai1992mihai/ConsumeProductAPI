@@ -2,12 +2,11 @@ package com.example.exception;
 
 import feign.FeignException;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.core.annotation.Order;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.client.HttpClientErrorException;
 
 @Slf4j
 @ControllerAdvice
@@ -33,6 +32,14 @@ public class GlobalExceptionHandler {
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
                 .body(new ErrorResponse("Internal Server Error"));
     }
+
+    @ExceptionHandler(HttpClientErrorException.NotFound.class)
+    public ResponseEntity<ErrorResponse> handleNotFound(HttpClientErrorException.NotFound ex) {
+        log.warn("API returned 404", ex);
+        return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                .body(new ErrorResponse("Not Found"));
+    }
+
 
 
     @ExceptionHandler(Exception.class)
