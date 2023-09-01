@@ -52,4 +52,4 @@ Content-Type: application/json
 }
 
 ### Delete a product Rest
-DELETE localhost:8082/restTemplate/products/39
+DELETE localhost:8082/restTemplate/products/41
