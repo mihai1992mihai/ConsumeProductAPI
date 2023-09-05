@@ -18,7 +18,6 @@ public class RestTemplateController {
 
     @GetMapping(value = "/restTemplate/products", produces = { MediaType.APPLICATION_JSON_VALUE })
     public ResponseEntity<ProductsDTO> getProducts() {
-        ResponseEntity<ProductsDTO> responseEntity = restTemplateService.getProducts();
 
         return restTemplateService.getProducts();
     }

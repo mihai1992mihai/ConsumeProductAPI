@@ -15,11 +15,7 @@ import org.springframework.web.bind.annotation.*;
 @AllArgsConstructor
 public class OpenFeignController {
 
-
     private OpenFeignService openFeignService;
-
-
-
 
     @GetMapping(value = "/products", produces = { MediaType.APPLICATION_JSON_VALUE })
     public ResponseEntity<ProductsDTO> getProducts() {
@@ -51,6 +47,6 @@ public class OpenFeignController {
     public ResponseEntity<JsonNode> deleteCustomer(@PathVariable Long id) {
 
         return openFeignService.deleteProduct(id);
-//        return ResponseEntity.ok().build();
+
     }
 }
