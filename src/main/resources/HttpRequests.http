@@ -1,10 +1,10 @@
-### Get all products OpenFeign
+### Get all products
 GET localhost:8082/products
 
-### Customer with number OpenFeign
-GET localhost:8082/products/55
+### Customer with number
+GET localhost:8082/products/12
 
-### Post a product OpenFeign
+### Post a product
 POST localhost:8082/products
 Content-Type: application/json
 
@@ -13,8 +13,8 @@ Content-Type: application/json
   "price": 2.79
 }
 
-### Put a product OpenFeign
-PUT localhost:8082/products/20
+### Put a product
+PUT localhost:8082/products/19
 Content-Type: application/json
 
 {
@@ -22,34 +22,8 @@ Content-Type: application/json
   "price": 2.79
 }
 
-### Delete a product OpenFeign
-DELETE localhost:8082/products/27
+### Delete a product
+DELETE localhost:8082/products/19
 
 --------------------
 
-### Get all products Rest
-GET localhost:8082/restTemplate/products
-
-### Customer with number Rest
-GET localhost:8082/restTemplate/products/55
-
-### Post a product Rest
-POST localhost:8082/restTemplate/products
-Content-Type: application/json
-
-{
-  "name": "aaa",
-  "price": 2.79
-}
-
-### Put a product Rest
-PUT localhost:8082/restTemplate/products/21
-Content-Type: application/json
-
-{
-  "name": "aab",
-  "price": 2.79
-}
-
-### Delete a product Rest
-DELETE localhost:8082/restTemplate/products/21

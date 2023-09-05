@@ -2,51 +2,52 @@ package com.example.controller;
 
 import com.example.dto.ProductDTO;
 import com.example.dto.ProductsDTO;
-import com.example.service.OpenFeignService;
+import com.example.service.ClientService;
 import com.fasterxml.jackson.databind.JsonNode;
 import lombok.AllArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-@Slf4j
 @RestController
-@AllArgsConstructor
-public class OpenFeignController {
+public class Controller {
 
-    private OpenFeignService openFeignService;
+    @Qualifier("restTemplate")
+    @Autowired
+    private ClientService clientService;
 
     @GetMapping(value = "/products", produces = { MediaType.APPLICATION_JSON_VALUE })
     public ResponseEntity<ProductsDTO> getProducts() {
 
-        return openFeignService.getProducts();
+        return clientService.getProducts();
     }
 
 
     @GetMapping(value = "/products/{id}", produces = { MediaType.APPLICATION_JSON_VALUE })
     public ResponseEntity<ProductDTO> getProduct(@PathVariable Long id) {
 
-        return openFeignService.getProduct(id);
+        return clientService.getProduct(id);
     }
 
 
     @PostMapping(value ="/products", produces = { MediaType.APPLICATION_JSON_VALUE })
     public ResponseEntity<ProductDTO> postCustomer(@RequestBody ProductDTO productDTO){
 
-        return openFeignService.postProduct(productDTO);
+        return clientService.postProduct(productDTO);
     }
 
     @PutMapping(value = "/products/{id}", produces = { MediaType.APPLICATION_JSON_VALUE })
     public ResponseEntity<ProductDTO> putCustomer(@PathVariable Long id, @RequestBody ProductDTO productDTO) {
 
-        return openFeignService.putProduct(id, productDTO);
+        return clientService.putProduct(id, productDTO);
     }
 
     @DeleteMapping(value = "/products/{id}", produces = { MediaType.APPLICATION_JSON_VALUE })
     public ResponseEntity<JsonNode> deleteCustomer(@PathVariable Long id) {
 
-        return openFeignService.deleteProduct(id);
+        return clientService.deleteProduct(id);
 
     }
 }

@@ -5,12 +5,15 @@ import com.example.dto.ProductsDTO;
 import com.example.restClient.OpenFeignClient;
 import com.fasterxml.jackson.databind.JsonNode;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Primary;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-@Service
-@AllArgsConstructor
-public class OpenFeignService {
+
+
+@Service("openFeign")
+public class OpenFeignService implements ClientService {
 
     private OpenFeignClient openFeignClient;
 
